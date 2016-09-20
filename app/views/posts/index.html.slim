@@ -1,0 +1,21 @@
+h1 Post Index
+
+table
+	thead
+		tr
+			th Title
+			th Content
+			th cols = "3"
+
+	tbody
+	- @posts.each do |post|
+		tr
+			td = post.title
+			td = post.content
+			td = link_to "Show", post 
+			td = link_to "Edit", edit_post_path(post)
+			td = link_to "Delete", post, data: { confirm: "Are you Sure?" }, method: :delete
+
+br
+
+= link_to "New", new_post_path
