@@ -1,6 +1,16 @@
 fieldset style="width: 300px"
-	lendge Attachment:
-	= form.fields_for :attachments do |attachment_form|
-	 .field
-	   = attachment_form.label :content
-	   = attachment_form.text_area :content
+  lendge Attachment:
+  h4#attachmentId 删除Attachment
+  = form.fields_for :attachments do |attachment_form|
+   .field
+     = attachment_form.label :content
+     = attachment_form.text_area :content
+     = attachment_form.object.errors[:content].join(",")
+br
+
+javascript:
+  $(function(){
+    $("h4").click(function(){
+    	$(this).parent().hide();
+    });
+  });

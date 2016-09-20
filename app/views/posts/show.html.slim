@@ -1,11 +1,16 @@
 h1 Show Post
 
 p 
-	strong Title:
+	strong 话题:
 	= @post.title
 
 p 
-	strong Content:
+	strong 话题内容:
 	= @post.content
+
+p 
+	strong 附件内容:
+	= @post.attachments.map(&:content).join(", ")
+
 
 = link_to 'Back', posts_path

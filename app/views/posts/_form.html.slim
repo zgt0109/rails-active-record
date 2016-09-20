@@ -1,3 +1,4 @@
+- @post.attachments.build
 = form_for(@post) do |f|
   .field
     = f.label :title
@@ -11,16 +12,19 @@
     = f.object.errors[:content].join(",")
     br
 
-  .field
+  .field.attachment
     h2 Attachments
-    fieldset style="width: 300px"
-      lendge Attachment:
-      = f.fields_for :attachments do |attachment_form|
-       .field
-         = attachment_form.label :content
-         = attachment_form.text_area :content
-         = attachment_form.object.errors[:content].join(",")
-    br
+    h3.many 新增一条附件
+    .segments
+      = render :partial => 'attachments/form', :locals => { :form => f } 
 
   .actions
     = f.submit "Submit"
+
+
+  javascript:
+    $(function(){
+      $("h3.many").click(function(){
+        $(".segments").append("#{ j(render :partial => 'attachments/form', :locals => { :form => f }) }");
+      });
+    });
