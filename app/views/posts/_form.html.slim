@@ -1,21 +1,26 @@
-- @post.attachments.build
 = form_for(@post) do |f|
   .field
     = f.label :title
     = f.text_field :title
+    = f.object.errors[:title].join(",")
     br
   
   .field
     = f.label :content
     = f.text_area :content
+    = f.object.errors[:content].join(",")
     br
 
   .field
     h2 Attachments
-    = f.fields_for :attachments do |attachment_form|
-     .field
-       = attachment_form.label :content, "Attachment:"
-       = attachment_form.text_area :content
+    fieldset style="width: 300px"
+      lendge Attachment:
+      = f.fields_for :attachments do |attachment_form|
+       .field
+         = attachment_form.label :content
+         = attachment_form.text_area :content
+         = attachment_form.object.errors[:content].join(",")
+    br
 
   .actions
     = f.submit "Submit"

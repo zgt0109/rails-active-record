@@ -3,15 +3,19 @@ h1 Post Index
 table
 	thead
 		tr
+			th ID
 			th 话题
 			th 内容
+			th 所有附件内容
 			th cols = "3"
 
 	tbody
 	- @posts.each do |post|
 		tr
+			td = post.id
 			td = post.title
 			td = post.content
+			td = post.attachments.map(&:content).join(", ")
 			td = link_to "Show", post 
 			td = link_to "Edit", edit_post_path(post)
 			td = link_to "Delete", post, data: { confirm: "Are you Sure?" }, method: :delete

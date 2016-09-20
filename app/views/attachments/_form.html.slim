@@ -1,4 +1,6 @@
-= form.fields_for :attachments do |attachment_form|
- .field
-   = attachment_form.label :content, "Attachment:"
-   = attachment_form.text_area :content
+fieldset style="width: 300px"
+	lendge Attachment:
+	= form.fields_for :attachments do |attachment_form|
+	 .field
+	   = attachment_form.label :content
+	   = attachment_form.text_area :content

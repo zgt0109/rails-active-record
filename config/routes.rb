@@ -2,7 +2,12 @@ BlogActiveRecord::Application.routes.draw do
 
   root :to => 'welcome#index'
   
-  resources :posts
+  resources :posts do
+    member do 
+      get :many_attachment
+      get :small_attachment
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

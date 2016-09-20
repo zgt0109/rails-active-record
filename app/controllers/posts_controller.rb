@@ -10,6 +10,14 @@ class PostsController < ApplicationController
 		
 	end
 
+	def many_attachment
+		
+	end
+
+	def small_attachment
+		
+	end
+
 	def new
 		@post = Post.new
 	end
