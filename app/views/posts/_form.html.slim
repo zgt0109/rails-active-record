@@ -1,4 +1,5 @@
-=form_for(@post) do |f|
+- @post.attachments.build
+= form_for(@post) do |f|
   .field
     = f.label :title
     = f.text_field :title
@@ -8,5 +9,13 @@
     = f.label :content
     = f.text_area :content
     br
+
+  .field
+    h2 Attachments
+    = f.fields_for :attachments do |attachment_form|
+     .field
+       = attachment_form.label :content, "Attachment:"
+       = attachment_form.text_area :content
+
   .actions
     = f.submit "Submit"

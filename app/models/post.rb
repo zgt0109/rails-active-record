@@ -9,7 +9,12 @@
 #  updated_at :datetime         not null
 #
 
+
+
 class Post < ActiveRecord::Base
-	attr_accessible :title, :content
-	
+	attr_accessible :title, :content, :attachments_attributes
+
+	has_many :attachments
+	accepts_nested_attributes_for :attachments, :allow_destroy => :true
+
 end

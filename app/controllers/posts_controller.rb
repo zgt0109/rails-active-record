@@ -16,9 +16,9 @@ class PostsController < ApplicationController
 
 	def create
 		# insert into `posts` (`title`, `content`, `created_at`, `updated_at`) values ('post-title', 'post-content', '2016-9-20 12:30:00', '2016-9-20 12:30:00');
-		@post = Post.new(params[:post])
+	 	@post = Post.new params[:post]
 		if @post.save
-			redirect_to @post
+			redirect_to posts_path
 		else
 			render 'new'
 		end
